@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Define la codificación de caracteres como UTF-8, que es una codificación estándar que soporta la mayoría de los caracteres usados en el mundo. -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define la configuración de la ventana gráfica para asegurar que el contenido sea adecuado para todos los tamaños de pantalla, especialmente para dispositivos móviles. -->
+
+    <title>Juego de Concentración</title>
+    <!-- Título de la página que aparecerá en la pestaña del navegador. -->
+    
+    <link rel="stylesheet" href="style.css">
+    <!-- Vincula una hoja de estilos externa (style.css) que se utiliza para definir el diseño y estilo visual del contenido. -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Vincula una fuente externa desde Google Fonts. La fuente utilizada es "Poppins" con varios pesos (300, 400, 600). -->
+</head>
+
+<body>
+    <!-- Cuerpo del documento, que contiene el contenido visible de la página. -->
+
+    <div class="game-container">
+        <!-- Contenedor principal del juego. "game-container" es una clase que se utiliza en el CSS para aplicar estilos. -->
+        
+        <h1>Juego de Concentración</h1>
+        <!-- Título principal de la página, que indica el nombre del juego. -->
+
+        <div id="game-board" class="game-board"></div>
+        <!-- Aquí es donde se construye el tablero del juego. El ID "game-board" se usa para referenciar este elemento en el JavaScript y la clase "game-board" para aplicarle estilos con CSS. -->
+
+        <p id="status"></p>
+        <!-- Parrafo con ID "status", probablemente utilizado para mostrar mensajes sobre el estado del juego (por ejemplo, si el jugador ha ganado o perdido). -->
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Se incluye un archivo externo de JavaScript llamado "script.js" que probablemente contiene toda la lógica del juego de concentración. -->
+</body>
+</html>
