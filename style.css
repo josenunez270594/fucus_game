@@ -1,166 +1,179 @@
 /* Estilos generales */
 body {
-    font-family: 'Poppins', sans-serif;
-    /* Se utiliza la fuente 'Poppins' de Google Fonts, con sans-serif como respaldo. */
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Centra el contenido en la pantalla tanto horizontal como verticalmente usando Flexbox. */
-    
-    height: 100vh;
-    /* Establece la altura del cuerpo al 100% del viewport, asegurando que ocupe toda la pantalla. */
-    
-    margin: 0;
-    /* Elimina los márgenes por defecto del body. */
-    
-    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-    /* Aplica un fondo degradado con un ángulo de 135 grados, que va de un azul claro a un azul más oscuro. */
-    
+    font-family: 'Poppins', sans-serif; /* Fuente utilizada */
+    display: flex; /* Alineación en flexbox para centrar el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    height: 100vh; /* Altura de la pantalla completa */
+    margin: 0; /* Elimina el margen predeterminado */
+    /* Cambiamos el fondo a una imagen */
+    background: url('images/fondo.jpeg') no-repeat center center fixed;  /* Fondo con imagen centrada y fija */
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
     color: #333;
-    /* Define un color de texto predeterminado (gris oscuro). */
 }
-
+/* Capa semitransparente sobre el fondo para mejorar la legibilidad */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Capa semitransparente negra */
+    z-index: -1; /* Envía la capa detrás del contenido principal */
+}
+/* Estilo del contenedor principal del juego */
 .game-container {
-    text-align: center;
-    /* Centra el texto dentro del contenedor del juego. */
+    text-align: center; /* Centra el texto dentro del contenedor */
 }
 
+/* Estilos del título del juego */
 h1 {
-    font-size: 36px;
-    /* Establece el tamaño del texto del título en 36px. */
-    
+    font-size: 36px; /* Tamaño de fuente grande para el título */
     color: #ffffff;
-    /* El color del título es blanco. */
-    
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* Agrega una sombra de texto para darle más profundidad y legibilidad. */
-    
-    margin-bottom: 20px;
-    /* Agrega un espacio debajo del título para separar el contenido. */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Marcador que muestra los intentos y los puntos */
+.scoreboard {
+    font-size: 18px; /* Tamaño de fuente del marcador */
+    color: #ffffff;
+    display: flex;/* Alinea los elementos horizontalmente */
+    justify-content: space-between; /* Espacio entre los elementos */
+    width: 300px;/* Ancho del marcador */
+    margin: 0 auto; /* Centra el marcador horizontalmente */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 10px;/* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
 }
 
 /* Tablero de juego */
 .game-board {
-    display: grid;
-    /* Utiliza CSS Grid para organizar las cartas del juego en una cuadrícula. */
-    
-    grid-template-columns: repeat(4, 150px);
-    /* Crea 4 columnas con un ancho de 150px cada una. */
-    
-    gap: 15px;
-    /* Establece una separación de 15px entre las cartas. */
-    
-    margin: 20px auto;
-    /* Centra el tablero horizontalmente y agrega 20px de margen alrededor. */
-    
-    padding: 20px;
-    /* Agrega un relleno interior de 20px. */
-    
-    background-color: rgba(255, 255, 255, 0.2);
-    /* Aplica un fondo blanco semitransparente para el tablero de juego. */
-    
-    border-radius: 20px;
-    /* Bordes redondeados de 20px. */
-    
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    /* Aplica una sombra para dar un efecto de profundidad. */
+    display: grid; /* Utiliza un diseño de cuadrícula */
+    grid-template-columns: repeat(4, 150px); /* 4 columnas de 150px cada una */
+    gap: 15px; /* Espacio entre las cartas */
+    margin: 20px auto; /* Espacio alrededor del tablero y centrado horizontal */
+    padding: 20px; /* Espacio interno en el tablero */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para el tablero */
 }
 
 /* Cartas del juego */
 .card {
-    width: 150px;
-    height: 150px;
-    /* Establece un tamaño fijo para las cartas del juego (150x150px). */
-    
+    width: 150px; /* Ancho de cada carta */
+    height: 150px; /* Altura de cada carta */
     background-color: #ffffff;
-    /* El color de fondo de la carta es blanco. */
-    
-    border-radius: 15px;
-    /* Bordes redondeados de 15px. */
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Utiliza Flexbox para centrar el contenido de las cartas (las imágenes) tanto horizontal como verticalmente. */
-    
-    cursor: pointer;
-    /* Cambia el cursor a una mano cuando se pasa sobre la carta para indicar interactividad. */
-    
-    transition: transform 0.3s, box-shadow 0.3s;
-    /* Añade una transición suave para la transformación de tamaño y la sombra de la carta cuando se interactúa con ella. */
-    
-    position: relative;
-    /* Establece una posición relativa, lo que permite manipular sus hijos posicionados de forma absoluta si es necesario. */
-    
-    border: 2px solid transparent;
-    /* Agrega un borde transparente que puede ser cambiado cuando la carta hace match. */
-    
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra ligera alrededor de la carta para darle profundidad. */
+    border-radius: 15px; /* Bordes redondeados */
+    display: flex; /* Flexbox para centrar el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre la carta */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición para el giro y sombra */
+    position: relative; /* Para posicionar elementos hijos en relación con la carta */
+    border: 2px solid transparent; /* Borde invisible por defecto */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor de la carta */
+    overflow: hidden; /* Evita que la imagen se salga del contenedor */
 }
 
+
+/* Efecto de hover en las cartas */
 .card:hover {
-    transform: scale(1.05);
-    /* Cuando el usuario pasa el cursor sobre la carta, aumenta su tamaño en un 5%. */
-    
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-    /* Aumenta la sombra cuando se pasa el cursor, dando más énfasis a la carta. */
+    transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);  /* Sombra más intensa en hover */
 }
 
 /* Imagen dentro de la carta */
 .card img {
-    width: 100%;
-    height: 100%;
-    /* La imagen ocupa toda la carta. */
-    
-    border-radius: 15px;
-    /* La imagen también tiene bordes redondeados para ajustarse al estilo de la carta. */
-    
-    display: none;
-    /* Por defecto, las imágenes están ocultas hasta que la carta sea volteada. */
+    width: 100%; /* Imagen ocupa todo el ancho de la carta */
+    height: 100%; /* Imagen ocupa toda la altura de la carta */
+    object-fit: cover; /* Asegura que la imagen ocupe todo el espacio de la carta sin deformarse */
+    border-radius: 15px; /* Bordes redondeados */
+    display: none; /* Oculta la imagen por defecto */
 }
 
+
+/* Muestra la imagen cuando la carta está volteada */
 .card.flipped img {
-    display: block;
-    /* Cuando la carta tiene la clase "flipped", se muestra la imagen. */
+    display: block; /* Muestra la imagen */
+}
+
+/* Texto en cartas de tipo 'text' */
+.card span {
+    font-size: 18px;/* Tamaño de fuente del texto */
+    color: #333;/* Color del texto */
+    display: none; /* Oculta el texto por defecto */
+}
+
+/* Muestra el texto cuando la carta está volteada */
+.card.flipped span {
+    display: inline-block;/* Muestra el texto */
 }
 
 /* Cartas que hacen match */
 .card.matched {
-    background-color: #66ff99;
-    /* Las cartas que hacen match se colorean de verde. */
-    
-    border: 2px solid #66ff99;
-    /* El borde también se vuelve verde para resaltar el match. */
-    
-    box-shadow: 0px 4px 10px rgba(0, 255, 100, 0.3);
-    /* Se aplica una sombra más brillante en tono verde para resaltar más el match. */
-    
-    transform: scale(1.1);
-    /* Las cartas que hacen match se agrandan un 10% para resaltarlas. */
+    background-color: #66ff99; /* Fondo verde para las cartas emparejadas */
+    border: 2px solid #66ff99; /* Borde verde */
+    box-shadow: 0px 4px 10px rgba(0, 255, 100, 0.3); /* Sombra verde */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
 }
+
 
 /* Estilo del texto de estado */
 #status {
-    margin-top: 20px;
-    /* Espacio en la parte superior del estado para separarlo del tablero. */
-    
-    font-size: 18px;
-    /* Tamaño de la fuente del texto de estado. */
-    
+    margin-top: 20px;/* Espacio superior */
+    font-size: 18px; /* Tamaño de fuente */
     color: #ffffff;
-    /* El texto del estado es blanco. */
-    
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Fondo semitransparente negro para el cuadro de estado. */
-    
-    padding: 10px;
-    /* Añade un relleno interior de 10px al texto del estado. */
-    
-    border-radius: 10px;
-    /* Bordes redondeados de 10px para el cuadro del estado. */
-    
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    /* Aplica una sombra al cuadro del estado para darle más profundidad. */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 10px;  /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para el texto */
 }
+
+/* Contenedor del mensaje de finalización */
+.end-message {
+    position: fixed; /* Posiciona el mensaje en el centro de la pantalla */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta la posición exacta al centro */
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro y semitransparente */
+    color: #ffffff;
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px;  /* Bordes redondeados */
+    text-align: center; /* Centra el texto */
+    z-index: 10; /* Asegura que esté encima de otros elementos */
+    display: flex; /* Flexbox para organizar los elementos dentro */
+    flex-direction: column; /* Elementos en columna */
+    gap: 10px; /* Espacio entre elementos internos */
+}
+
+/* Estilo del texto dentro del mensaje de finalización */
+.end-message p {
+    font-size: 24px; /* Tamaño de fuente más grande */
+    margin: 0; /* Sin margen */
+}
+
+
+/* Estilo del botón de reinicio dentro del mensaje de finalización */
+.end-message button {
+    background-color: #4CAF50;
+    color: white;
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a mano */
+    transition: background-color 0.3s; /* Transición de color de fondo */
+}
+
+/* Efecto hover en el botón de reinicio */
+.end-message button:hover {
+    background-color: #45a049; /* Cambia el fondo a un verde más oscuro en hover */
+}
+
+/* Clase oculta que se utiliza para ocultar el mensaje de finalización hasta que sea necesario */
+.hidden {
+    display: none;
+}
+

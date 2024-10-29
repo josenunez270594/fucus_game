@@ -1,40 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <!-- Define la codificación de caracteres como UTF-8, que es una codificación estándar que soporta la mayoría de los caracteres usados en el mundo. -->
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Define la configuración de la ventana gráfica para asegurar que el contenido sea adecuado para todos los tamaños de pantalla, especialmente para dispositivos móviles. -->
-
     <title>Focus Game</title>
-    <!-- Título de la página que aparecerá en la pestaña del navegador. -->
-    
-    <link rel="stylesheet" href="style.css">
-    <!-- Vincula una hoja de estilos externa (style.css) que se utiliza para definir el diseño y estilo visual del contenido. -->
-    
+    <!-- Enlace a la fuente de Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Vincula una fuente externa desde Google Fonts. La fuente utilizada es "Poppins" con varios pesos (300, 400, 600). -->
+    <!-- Enlace al archivo CSS externo para aplicar estilos -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Cuerpo del documento, que contiene el contenido visible de la página. -->
-
+    <!-- Contenedor principal del juego -->
     <div class="game-container">
-        <!-- Contenedor principal del juego. "game-container" es una clase que se utiliza en el CSS para aplicar estilos. -->
-        
-        <h1>Juego de Concentración</h1>
-        <!-- Título principal de la página, que indica el nombre del juego. -->
-
+        <!-- Título del juego -->
+        <h1>Focus Game</h1>
+        <!-- Marcador que muestra intentos restantes y puntuación -->
+        <div class="scoreboard">
+            <p id="attempts">Attempts: 10</p> <!-- muestra la cantidad de intentos restantes -->
+            <p id="score">Points: 0</p> <!-- muestra la puntuación del jugador -->
+        </div>
+        <!-- Tablero de juego donde aparecerán las cartas -->
         <div id="game-board" class="game-board"></div>
-        <!-- Aquí es donde se construye el tablero del juego. El ID "game-board" se usa para referenciar este elemento en el JavaScript y la clase "game-board" para aplicarle estilos con CSS. -->
-
-        <p id="status"></p>
-        <!-- Parrafo con ID "status", probablemente utilizado para mostrar mensajes sobre el estado del juego (por ejemplo, si el jugador ha ganado o perdido). -->
     </div>
-
+    <!-- Mensaje de finalización del juego -->
+    <div id="end-message" class="end-message hidden">
+        <p id="end-text"></p> <!-- Texto que mostrará el mensaje final -->
+        <button id="restart-button" onclick="restartGame()">Restart</button> <!-- Botón para reiniciar el juego, llama a la función JavaScript 'restartGame()' -->
+    </div>
+    <!-- Enlace al archivo JavaScript para la lógica del juego -->
     <script src="script.js"></script>
-    <!-- Se incluye un archivo externo de JavaScript llamado "script.js" que probablemente contiene toda la lógica del juego de concentración. -->
 </body>
 </html>
