@@ -20,8 +20,8 @@ let gameCards = images.flatMap(img => [
 let firstCard = null;  // Almacena la primera carta seleccionada
 let secondCard = null; // Almacena la segunda carta seleccionada
 let lockBoard = false; // Bloquea el tablero temporalmente mientras se verifica un match
-let attempts = 10; 
-let score = 0;
+let attempts = 10; // intentos
+let score = 0; // puntaje
 let matchesFound = 0; // Número de pares encontrados
 
 // Referencias a elementos del DOM
